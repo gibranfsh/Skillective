@@ -40,7 +40,7 @@ export default function NavigationBar() {
             {user ? 
               <div className="navbar--pilihan">
                 <Nav.Link href="/explore"><span className='choice1'>Explore</span></Nav.Link>
-                <Nav.Link href="/login"><span className='choice2'>Your Session</span></Nav.Link>
+                <Nav.Link href="/yoursession"><span className='choice2'>Your Session</span></Nav.Link>
               </div> :
               <div className="navbar--pilihan">
                 <Nav.Link href="/login"><span className='choice1'>Become a Mentor</span></Nav.Link>

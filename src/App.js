@@ -13,6 +13,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import SignupAuth from './components/SignupAuth';
 import Explore from './components/Explore';
+import Yoursession from './components/Yoursession';
 
 function App() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -38,6 +39,7 @@ function App() {
             <Route path="/project" element={<Protected> <Project /> </Protected>} />
             <Route path="/signupauth" element={<SignupAuth />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/yoursession" element={<Yoursession />} />
           </Routes>
         </Router>
         <Footer />
