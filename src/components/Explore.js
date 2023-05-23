@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Projectbox from "./Projectbox";
 import { UserAuth } from '../context/AuthContext';
+
 export default function Explore() {
   const { user, setUser } = UserAuth();
   const navigate = useNavigate();
@@ -263,6 +264,8 @@ export default function Explore() {
               deadline={projectData.deadline}
               image={projectData.image}
               desc={projectData.desc}
+              tanggal={projectData.tanggal}
+              status="progress"
               // navigate={navigate}
             />
           ));

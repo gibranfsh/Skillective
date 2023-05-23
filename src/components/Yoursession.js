@@ -1,11 +1,64 @@
 import Mentorsession from "./Mentorsession";
 import Projsession from "./Projsession";
 import "./Yoursession.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { UserAuth } from '../context/AuthContext';
 
 export default function Yoursession() {
   const [clickmentor, setClickmentor] = useState(true);
   const [clickproject, setClickproject] = useState(false);
+  const { user, setUser } = UserAuth();
+  const [usersMentors, setUsersMentors] = useState([]);
+  const [usersProjects, setUsersProjects] = useState([]);
+
+  // Fetch data from Firebase for mentors that the users have added to their session
+  const fetchUsersMentors = async () => {
+    try {
+      const response = await fetch(
+        "https://firebasic-2-default-rtdb.asia-southeast1.firebasedatabase.app/usersmentors.json"
+      );
+      const data = await response.json();
+
+      // Filter mentors by user's id
+      const usersMentorsData = Object.values(data)
+        .filter((mentorData) => mentorData.userId === user.uid);
+
+      console.log('usersMentorsData:', usersMentorsData)
+      setUsersMentors(usersMentorsData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Fetch data from Firebase for projects that the users have added to their session
+  const fetchUsersProjects = async () => {
+    try {
+      const response = await fetch(
+        "https://firebasic-2-default-rtdb.asia-southeast1.firebasedatabase.app/usersprojects.json"
+      );
+      const data = await response.json();
+
+      // Filter projects by user's id
+      const usersProjectsData = Object.values(data)
+        .filter((projectData) => projectData.userId === user.uid);
+
+      console.log('usersProjectsData:', usersProjectsData)
+      setUsersProjects(usersProjectsData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchUsersMentors();
+      await fetchUsersProjects();
+    };
+
+    fetchData();
+  }, [usersMentors]);
+
+
 
   return (
     <div className="urses">
@@ -49,14 +102,27 @@ export default function Yoursession() {
       <div className="urses--mentor--container">
         {clickmentor ? (
           <>
-            <Mentorsession nama="Clara Alrosa" profesi="UX Designer" />
-            <Mentorsession nama="Vania Salsabila" profesi="Penyepong Gibran" />
-            <Mentorsession nama="Vina" profesi="Frontend Developer" />
-            <Mentorsession nama="Brigita" profesi="Seniman.js" />
+            {usersMentors.map((mentorData) => (
+              <Mentorsession
+                id={mentorData.id}
+                nama={mentorData.name}
+                profesi={mentorData.company}
+              />
+            ))}
           </>
         ) : (
           <>
-            <Projsession
+            {usersProjects.map((projectData) => (
+              <Projsession
+                id={projectData.id}
+                tanggal={projectData.tanggal} // {projectData.tanggal}
+                deadline={projectData.deadline}
+                nama={projectData.name}
+                value={projectData.value}
+                status="progress"
+              />
+            ))}
+            {/* <Projsession
               tanggal="July 30 2023"
               deadline="4 weeks"
               nama="Pornhub Mobile"
@@ -86,7 +152,7 @@ export default function Yoursession() {
               nama="Ashwa"
               value="Rp.3.000.000"
               status="done"
-            />
+            /> */}
           </>
         )}
       </div>
