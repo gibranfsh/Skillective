@@ -316,6 +316,19 @@ p{
   margin-bottom: 20px;
 }
 
+.projectSpan{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  display: flex;
+  margin-left: 10px;
+  color: red;
+}
+
 .login--submit {
   font-family: 'Open Sans';
   font-style: normal;
