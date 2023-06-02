@@ -9,10 +9,19 @@ import { UserAuth } from '../context/AuthContext';
 
 export default function Explore() {
   const { user, setUser } = UserAuth();
+  console.log("user", user);
+  // if (user) {
+  //   console.log("user.uid", user.uid);
+  //   if (user.uid) {
+  //     console.log("MEMEK");
+  //   }
+  // }
   const navigate = useNavigate();
-  // const { state } = useLocation();
-  // const mentorState = state ? true : state.mentorKondisi;
-  const [mentor, setMentor] = useState(true);
+  const { state } = useLocation();
+  // console.log("state", state);
+  const mentorState = state?.mentorKondisi;
+  console.log("mentorState", mentorState);
+  const [mentor, setMentor] = useState(!mentorState);
   const [allMentors, setAllMentors] = useState([]);
   const [mentorsFiltered, setMentorsFiltered] = useState([0]);
   const [mentorsId, setMentorsId] = useState(["Empty"]);
@@ -166,7 +175,9 @@ export default function Explore() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetchAllMentorsSession();
+      if (user) {
+        await fetchAllMentorsSession();
+      }
       // wait
       await new Promise(r => setTimeout(r, 500));
       await fetchAllMentors();
@@ -194,7 +205,9 @@ export default function Explore() {
   useEffect(() => {
     const fetchProjects = async () => {
       // Fetch all projects session
-      await fetchAllProjectsSession();
+      if (user) {
+        await fetchAllProjectsSession();
+      }
 
       // Fetch all projects
       await fetchAllProjects();
@@ -209,6 +222,11 @@ export default function Explore() {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
+  };
+
+  const handleAddToSession = () => {
+    setMentor(false); // Set mentor state to false
+    navigate('/explore', { state: { mentorKondisi: true } }); // Navigate to /explore with mentorKondisi = false
   };
 
   const konten = () => {
@@ -266,7 +284,7 @@ export default function Explore() {
               desc={projectData.desc}
               tanggal={projectData.tanggal}
               status="progress"
-              // navigate={navigate}
+              onAddToSession={handleAddToSession}
             />
           ));
         } else if (projectsFiltered.length === 0) { // && projectsId.length > 0
@@ -277,6 +295,15 @@ export default function Explore() {
       }
     }
   };
+
+  const onDifficultyChange = (event) => {
+    if (event.target.value === 'easy') {
+      setMentor(true);
+    } else if (event.target.value === 'medium') {
+      setMentor(false);
+    }
+  };
+
   return (
     <div className="explore">
       <div className="home--choice">
@@ -285,21 +312,20 @@ export default function Explore() {
             type="radio"
             name="difficulty"
             value="easy"
-            checked
-            onchange="onDifficultyChange(this)"
-            onClick={() => setMentor(true)}
+            checked={mentor}
+            onChange={onDifficultyChange}
           />
-          <span className="home--choice--button">Mentors</span>
+          <span className="home--choice--button cursor-pointer">Mentors</span>
         </label>
         <label>
           <input
             type="radio"
             name="difficulty"
             value="medium"
-            onchange="onDifficultyChange(this)"
-            onClick={() => setMentor(false)}
+            checked={!mentor}
+            onChange={onDifficultyChange}
           />
-          <span className="home--choice--button">Projects</span>
+          <span className="home--choice--button cursor-pointer">Projects</span>
         </label>
       </div>
       <div className="explore--search">

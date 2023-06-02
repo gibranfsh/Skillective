@@ -47,6 +47,7 @@ export default function Projectbox(props) {
     // BLM BISA GATAU KNP USENAVIGATE GK BISA DIPAKE
     // // navigate to the explore page but with mentor state set to false
     // navigate('/explore', { state: { mentorKondisi: false } });
+    // props.onAddToSession();
   };
 
   return (
