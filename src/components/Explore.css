@@ -21,6 +21,7 @@
   position: absolute;
   border-radius: 0.5rem;
   border: 1px solid #c3c3c3;
+  padding: 1rem;
 }
 
 .explore--search--icon {
@@ -36,16 +37,16 @@
   justify-content: space-between;
   align-items: center;
   background: #FDFDFD;
-  box-shadow: -1px 3px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
-  padding: 0rem 0.8rem;
+  padding: 0rem 0.3rem;
   
 }
 
 .filter--teks {
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   /* line-height: 24px; */
   margin-top: 1rem;
   color: #119abe;
@@ -53,18 +54,34 @@
 
 .explore--search--filter {
     color:#119abe;
+    font-size: 1rem;
 }
 
 .kotak--container{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-left: 6rem;
   margin-right: 6rem;
   margin-bottom: 3rem;
+  flex-wrap: wrap;
 }
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid rgba(17, 154, 190, 0.15); 
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

@@ -250,7 +250,7 @@ export default function Explore() {
 
     if (mentor) {
       if (isLoading) {
-        return <p>Loading...</p>;
+        return <div className="loader"></div>;
       } else {
         if (filteredMentors.length > 0) {
           return filteredMentors.map((mentorData) => (
@@ -265,12 +265,12 @@ export default function Explore() {
         } else if (mentorsFiltered.length === 0) { // && mentorsId.length > 0
           return <p>Woah. You already add all the mentors to your session.</p>;
         } else { // (mentorsId.length === 0)
-          return null;
+          return <p>No Results Found</p>;
         }
       }
     } else {
       if (isLoading) {
-        return <p>Loading...</p>;
+        return <div class="loader"></div>;
       } else {
         if (filteredProjects.length > 0) {
           return filteredProjects.map((projectData) => (
@@ -290,7 +290,7 @@ export default function Explore() {
         } else if (projectsFiltered.length === 0) { // && projectsId.length > 0
           return <p>Woah. You already add all the projects to your session.</p>;
         } else { // (projectsId.length === 0)
-          return null;
+          return <p>No Results Found</p>;
         }
       }
     }

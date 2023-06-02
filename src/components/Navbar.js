@@ -57,12 +57,6 @@ export default function NavigationBar() {
                   <NavDropdown.Item href="/" className='navbar--drop--item'>
                     <p >My Profile</p>
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/" className='navbar--drop--item'>
-                    <p >Settings</p>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/" className='navbar--drop--item'>
-                    {user.role === 'mentee' ? <p>My Mentor</p> : <p>My Mentee</p>}
-                  </NavDropdown.Item>
                   <NavDropdown.Item className='navbar--drop--item'>
                     <button onClick = {handleSignOut} className='navbar--signup--akun'>Sign Out</button>
                   </NavDropdown.Item>
