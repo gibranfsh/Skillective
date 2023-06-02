@@ -1,38 +1,37 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
 body {
   margin: 0;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-p{
-  font-family: 'Open Sans';
+p {
+  font-family: "Open Sans";
 }
 
-.nav-hidden{
+.nav-hidden {
   display: none;
 }
 
-.nav-app{
+.nav-app {
   transform: translateY(-100%);
   transition: transform 0.3s ease-in-out;
 }
 
-.navbar{
-  border-bottom: 5px solid #E5E5E5;
+.navbar {
+  border-bottom: 5px solid #e5e5e5;
 }
 
-.navbar--logo{
-  width : 180px;
-
+.navbar--logo {
+  width: 180px;
 }
 
 #navbar--dropdown + .dropdown-item {
@@ -42,36 +41,35 @@ p{
 }
 
 .pilihan {
-  margin-left: 100px ;
+  margin-left: 100px;
 }
 
-.navbar--akun{
+.navbar--akun {
   margin-left: 310px;
 }
 
-
-.navbar--login{
+.navbar--login {
   border-radius: 20px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 20px;
   width: 120px;
   height: 40px;
-  border: 1px solid #119ABE;
+  border: 1px solid #119abe;
   margin-bottom: 4px;
   margin-right: 10px;
 }
 
-.navbar--login:hover{
+.navbar--login:hover {
   background-color: rgb(181, 230, 204);
   color: white;
 }
 
 .navbar--signup {
   border-radius: 20px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -79,16 +77,16 @@ p{
   color: white;
   width: 120px;
   border: 1px solid white;
-  background-color: #119ABE;
+  background-color: #119abe;
   height: 40px;
 }
 
-.navbar--signup:hover{
+.navbar--signup:hover {
   background-color: white;
-  color: #119ABE;
+  color: #119abe;
 }
 
-.navbar--drop{
+.navbar--drop {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -96,16 +94,16 @@ p{
   text-align: right;
 }
 
-.navbar--drop--item{
+.navbar--drop--item {
   display: flex;
   align-items: center;
   justify-content: right;
   text-align: right;
 }
 
-.navbar--signup--akun{
+.navbar--signup--akun {
   border-radius: 20px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -117,13 +115,13 @@ p{
   height: 40px;
 }
 
-.navbar--signup--akun:hover{
+.navbar--signup--akun:hover {
   background-color: white;
   color: red;
 }
 
 .choice1 {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -133,7 +131,7 @@ p{
 }
 
 .choice2 {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -143,28 +141,21 @@ p{
   text-align: center;
 }
 
-.navbar--pilihan{
+.navbar--pilihan {
   margin-left: auto;
   margin-right: auto;
   display: flex;
   align-items: center;
-  
 }
 
 .login--bg {
-  background: linear-gradient(
-    to right,
-    white 0%,
-    white 70%,
-    #24c191 100%
-  );
+  background: linear-gradient(to right, white 0%, white 70%, #24c191 100%);
   background-size: cover;
   background-position: center;
   border-radius: 20px;
   margin-top: 70px;
   padding: 20px;
 }
-
 
 .login {
   min-width: fit-content;
@@ -177,9 +168,8 @@ p{
   margin-left: 150px;
 }
 
-
-.login--welkam{
-  font-family: 'Open Sans';
+.login--welkam {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: bolder;
   font-size: 40px;
@@ -189,14 +179,14 @@ p{
 }
 
 .back {
-  background-color: #E5E5E5;
-  width:40px;
-  display : flex;
+  background-color: #e5e5e5;
+  width: 40px;
+  display: flex;
   margin-bottom: 15px;
 }
 
-.login--connect{
-  font-family: 'Open Sans';
+.login--connect {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -205,13 +195,13 @@ p{
   text-align: justify;
 }
 
-.sosmed--button{
-  font-family: 'Open Sans';
+.sosmed--button {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   color: white;
-  display:flex;
+  display: flex;
   margin-top: 5px;
   flex-direction: row;
   border-radius: 20px;
@@ -220,17 +210,17 @@ p{
   height: 56px;
   margin-bottom: 10px;
   justify-content: center;
-  border : none;
-  background-color: #119ABE;
+  border: none;
+  background-color: #119abe;
 }
 
-.fb--button{
-  font-family: 'Open Sans';
+.fb--button {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   color: white;
-  display:flex;
+  display: flex;
   margin-top: 5px;
   flex-direction: row;
   border-radius: 20px;
@@ -239,12 +229,12 @@ p{
   height: 56px;
   margin-bottom: 10px;
   justify-content: center;
-  border : none;
-  background-color: #3664A2;
+  border: none;
+  background-color: #3664a2;
 }
 
 .sosmed--text {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -253,14 +243,14 @@ p{
   align-items: center;
   text-align: center;
   height: 56px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-left: 10px;
 }
 
-.sosmed--img{
+.sosmed--img {
   height: 40px;
   margin-top: 6px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 
@@ -271,22 +261,22 @@ p{
   border-radius: 7px;
 }
 
-.login--or{
-  max-width: 570px; 
-  height: 20px; 
-  border-bottom: 1px solid #dfdfdf; 
+.login--or {
+  max-width: 570px;
+  height: 20px;
+  border-bottom: 1px solid #dfdfdf;
   text-align: center;
 }
 
 .or--text {
-  background-color: #F3F5F6; 
+  background-color: #f3f5f6;
   font-weight: 300;
   font-size: 20px;
   padding: 0 10px;
   line-height: 35px;
 }
 
-.login--form{
+.login--form {
   display: flex;
   flex-direction: column;
   align-items: justify;
@@ -294,8 +284,8 @@ p{
   justify-content: justify;
 }
 
-.login--label{
-  font-family: 'Open Sans';
+.login--label {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -308,16 +298,16 @@ p{
 .login--input {
   max-width: 570px;
   height: 56px;
-  background: #FFFFFF;
-  border: 1px solid #E5E5E5;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 10px;
   padding-left: 20px;
   margin-bottom: 20px;
 }
 
-.projectSpan{
-  font-family: 'Open Sans';
+.projectSpan {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 11px;
@@ -330,12 +320,12 @@ p{
 }
 
 .login--submit {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   color: white;
-  display:flex;
+  display: flex;
   margin-top: 5px;
   flex-direction: row;
   border-radius: 20px;
@@ -345,7 +335,7 @@ p{
   height: 56px;
   margin-bottom: 20px;
   justify-content: center;
-  border : none;
+  border: none;
   background-color: #24c191;
 }
 
@@ -354,8 +344,7 @@ p{
   color: #24c191;
 }
 
-
-.login--tnc{
+.login--tnc {
   max-width: 570px;
   height: 37px;
   display: flex;
@@ -364,7 +353,7 @@ p{
 }
 
 .tnc--text {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-size: 16px;
   align-items: center;
@@ -405,55 +394,55 @@ p{
   margin-bottom: 30px;
 }
 
-.container--logo{
+.container--logo {
   display: flex;
   justify-content: justify;
 }
 
-.footer--container{
-  display : flex;
+.footer--container {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-left: 10px;
 }
 
-.footer--sosmed{
+.footer--sosmed {
   display: flex;
   margin-top: 10px;
   margin-bottom: 40px;
 }
 
-.footer--sosmed--icon{
+.footer--sosmed--icon {
   width: 50px;
   margin-left: 4px;
   margin-top: 17px;
 }
 
-.row{
+.row {
   width: 560px;
 }
 
-.row2{
+.row2 {
   display: flex;
   margin-right: 150px;
 }
 
-.row3{
+.row3 {
   display: flex;
   justify-content: space-between;
   margin-right: 130px;
   text-decoration: underline;
 }
 
-.col-md-6{
+.col-md-6 {
   display: flex;
   margin-left: 17px;
   margin-top: 0px;
 }
 
 @media only screen and (max-width: 767px) {
-  .login{
-    background:white;
+  .login {
+    background: white;
   }
   .footer {
     padding: 30px 0;
@@ -467,58 +456,55 @@ p{
     margin-bottom: 10px;
   }
 
-  .container--logo{
+  .container--logo {
     justify-content: center;
     margin-bottom: 15px;
   }
 
-  .footer--container{
+  .footer--container {
     display: contents;
   }
 
-  .row2{
+  .row2 {
     display: flex;
     justify-content: center;
     margin-right: 0px;
   }
 
-  .row3{
+  .row3 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 0px;
   }
 
-  .footer--sosmed{
+  .footer--sosmed {
     display: flex;
     margin-top: 10px;
     justify-content: center;
   }
-
-
 }
 
-
-.signup--pilihan{
-  border: 1px solid #E5E5E5;
+.signup--pilihan {
+  border: 1px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
 }
 
-.signup--or{
+.signup--or {
   max-width: 570px;
   min-width: 50px;
   width: 90%;
-  height: 20px; 
-  border-bottom: 1px solid #dfdfdf; 
+  height: 20px;
+  border-bottom: 1px solid #dfdfdf;
   text-align: center;
   margin-bottom: 20px;
 }
 
-.pw--alert{
-  font-family: 'Open Sans';
+.pw--alert {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 11px;
@@ -528,19 +514,19 @@ p{
   margin-left: 10px;
 }
 
-.pw--input{
+.pw--input {
   max-width: 570px;
   height: 56px;
-  background: #FFFFFF;
-  border: 1px solid #E5E5E5;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 10px;
   padding-left: 20px;
   margin-bottom: 3px;
 }
 
-.signup--with{
-  font-family: 'Open Sans';
+.signup--with {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -553,8 +539,8 @@ p{
   justify-content: center;
 }
 
-.signup--sosmed{
-  display:flex;
+.signup--sosmed {
+  display: flex;
   margin-top: 5px;
   flex-direction: row;
   border-radius: 20px;
@@ -563,12 +549,11 @@ p{
   height: 56px;
   margin-bottom: 10px;
   justify-content: center;
-  border : none;
+  border: none;
   margin-right: 10px;
-  
 }
 
-.signup--logo{
+.signup--logo {
   display: flex;
   align-items: center;
   max-width: 570px;
@@ -577,8 +562,8 @@ p{
   justify-content: center;
 }
 
-.signup--with--bawah{
-  font-family: 'Open Sans';
+.signup--with--bawah {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -590,22 +575,22 @@ p{
   justify-content: center;
 }
 
-.signup--click{
+.signup--click {
   text-decoration: underline;
   color: blue;
   margin-right: 3px;
   margin-left: 3px;
 }
 
-.sosmed--img--signup{
+.sosmed--img--signup {
   height: 40px;
   margin-top: 6px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
 }
 
-.validation--label{
-  font-family: 'Open Sans';
+.validation--label {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
@@ -614,7 +599,6 @@ p{
   color: red;
   margin-bottom: 20px;
 }
-
 
 .home--choice {
   display: flex;
@@ -626,24 +610,23 @@ p{
   font-size: 20px;
 }
 
-[type='radio'] {
+[type="radio"] {
   display: none;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-weight: 300;
   font-size: 20px;
 }
-[type='radio'] ~ span {
+[type="radio"] ~ span {
   padding: 8px 16px;
 }
 
-[type='radio']:checked ~ span {
+[type="radio"]:checked ~ span {
   content: "";
-  color: #119ABE;
-  border-bottom: 1px solid #119ABE;
-  
+  color: #119abe;
+  border-bottom: 1px solid #119abe;
 }
 
-.promosi{
+.promosi {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -652,13 +635,13 @@ p{
   margin-left: 30px;
   margin-right: 45px;
   border-radius: 20px;
-  border:0.5px solid #E5E5E5;
+  border: 0.5px solid #e5e5e5;
   background-color: white;
   padding: 10px 10px 10px 10px;
   box-shadow: rgb(134, 131, 131) 0px 0px 10px 0px;
 }
 
-.promosi--foto{
+.promosi--foto {
   width: 360px;
   height: 240px;
   border-radius: 20px;
@@ -666,8 +649,8 @@ p{
   align-items: justify;
 }
 
-.promosi--judul{
-  font-family: 'Open Sans';
+.promosi--judul {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -679,8 +662,8 @@ p{
   width: 360px;
 }
 
-.promosi--content{
-  font-family: 'Open Sans';
+.promosi--content {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 15px;
@@ -691,8 +674,8 @@ p{
   width: 320px;
 }
 
-.home--tagline{
-  font-family: 'Open Sans';
+.home--tagline {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
@@ -704,8 +687,8 @@ p{
   max-width: 690px;
   margin-right: 30px;
 }
-.home--tagline--text{
-  font-family: 'Open Sans';
+.home--tagline--text {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -722,36 +705,35 @@ p{
   margin-left: 70px;
 }
 
-.home--promo--box{
+.home--promo--box {
   display: flex;
   justify-content: justify;
   align-items: center;
-  margin-left : 70px;
-  
+  margin-left: 70px;
 }
 
-.home--view{
+.home--view {
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: underline;
   color: blue;
-  margin-left : 0px;
+  margin-left: 0px;
   margin-top: 6px;
   margin-bottom: 50px;
 }
 
-.home--request{
+.home--request {
   margin-top: 130px;
 }
 
 .home--request--button {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   color: white;
-  display:flex;
+  display: flex;
   margin-top: 40px;
   flex-direction: row;
   border-radius: 20px;
@@ -763,27 +745,19 @@ p{
   margin-bottom: 20px;
   justify-content: center;
   align-items: center;
-  border : none;
-  background: linear-gradient(
-    to right,
-   #119ABE 0%, 
-   #24c191 80%
-   );
+  border: none;
+  background: linear-gradient(to right, #119abe 0%, #24c191 80%);
 }
 
-.home--request--button:hover{
-  background: linear-gradient(
-    to right,
-   #24c191 0%, 
-   #119ABE 80%
-   )
+.home--request--button:hover {
+  background: linear-gradient(to right, #24c191 0%, #119abe 80%);
 }
 
-.req{
+.req {
   text-decoration: none;
 }
 
-.home--bg{
+.home--bg {
   background-image: url(../public/bg-home.png);
   background-repeat: no-repeat;
   background-position: right 85%;
@@ -798,25 +772,42 @@ p{
   align-items: center;
   margin-top: 40px;
   margin-bottom: 50px;
+  overflow: hidden; /* Hides the overflow beyond the container */
 }
 
-.home--startup--logo{
+.scrolling-wrapper {
+  display: inline-flex; /* Enables horizontal scrolling */
+  animation: scroll 30s linear infinite; /* Defines the animation properties */
+  width: fit-content;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0); /* Initial position */
+  }
+  100% {
+    transform: translateX(-50%); /* Fully scrolled position */
+  }
+}
+
+.home--startup--logo {
   width: 200px;
   height: 200px;
   margin-right: 80px;
 }
-.home--startup--logo--gojek{
+.home--startup--logo--gojek {
   width: 400px;
   height: 200px;
 }
-.home--startup--logo--tiket{
+.home--startup--logo--tiket {
   width: 400px;
   height: 100px;
+  align-self: center;
 }
 
-.kotakmentor{
+.kotakmentor {
   border-radius: 20px;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #e5e5e5;
   background-color: white;
   width: 500px;
   display: flex;
@@ -829,7 +820,7 @@ p{
   padding: 20px 10px;
 }
 
-.kotakmentor--foto{
+.kotakmentor--foto {
   display: flex;
   width: 204px;
   height: 204px;
@@ -839,8 +830,8 @@ p{
   border-radius: 50%;
 }
 
-.kotakmentor--nama{
-  font-family: 'Open Sans';
+.kotakmentor--nama {
+  font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -851,7 +842,7 @@ p{
   margin-left: auto;
 }
 
-.kotakmentor--detail{
+.kotakmentor--detail {
   display: flex;
   flex-direction: column;
   text-align: right;
@@ -863,18 +854,18 @@ p{
   line-height: 0.2cm;
 }
 
-.kotakmentor--details{
+.kotakmentor--details {
   margin-top: 50px;
 }
 
-.category--nama{
+.category--nama {
   font-weight: 700;
   font-size: 24px;
   line-height: 25px;
   width: 232px;
   text-align: justify;
 }
-.category{
+.category {
   width: 315px;
   height: 105px;
   left: 388px;
@@ -887,16 +878,12 @@ p{
   padding: 10px;
 }
 
-.category--explore{
+.category--explore {
   width: 315px;
   height: 105px;
   left: 388px;
   top: 1513px;
-  background: linear-gradient(
-    to right,
-   #119ABE 0%, 
-   #24c191 80%
-   );
+  background: linear-gradient(to right, #119abe 0%, #24c191 80%);
   box-shadow: -4px 4px 15px -6px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   margin-right: 30px;
@@ -907,12 +894,8 @@ p{
   justify-content: center;
 }
 
-.category--explore:hover{
-  background: linear-gradient(
-    to left,
-   #119ABE 0%, 
-   #24c191 80%
-   );
+.category--explore:hover {
+  background: linear-gradient(to left, #119abe 0%, #24c191 80%);
 }
 
 .category--explore--nama {
@@ -920,7 +903,7 @@ p{
   font-size: 24px;
   line-height: 25px;
   width: 232px;
-  color : white;
+  color: white;
 }
 
 .home--category {
@@ -935,7 +918,7 @@ p{
   justify-content: center;
 }
 
-.discover--tag{
+.discover--tag {
   display: flex;
   justify-content: space-between;
   margin-left: 70px;
@@ -957,7 +940,7 @@ p{
   color: white;
   width: 120px;
   border: 1px solid white;
-  background-color: #119ABE;
+  background-color: #119abe;
   height: 40px;
   margin-right: 20px;
 }
@@ -986,7 +969,7 @@ p{
   margin-right: 40px;
 }
 
-.home--mentor--row{
+.home--mentor--row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
@@ -994,15 +977,15 @@ p{
   margin-left: 200px;
   margin-right: 200px;
 }
-.home--checkout{
+.home--checkout {
   font-weight: 700;
   font-size: 40px;
   line-height: 54px;
   margin-top: 60px;
 }
-.kotakkomen{
+.kotakkomen {
   border-radius: 20px;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #e5e5e5;
   background-color: white;
   width: 500px;
   display: flex;
@@ -1017,7 +1000,7 @@ p{
   padding: 40px 40px 40px 40px;
 }
 
-.kotakkomen--foto{
+.kotakkomen--foto {
   display: flex;
   width: 74px;
   height: 74px;
@@ -1032,16 +1015,16 @@ p{
   justify-content: flex-start;
 }
 
-.kotakkomen--details{
+.kotakkomen--details {
   text-align: left;
   line-height: 10px;
 }
 
-.kotakkomen--komen{
-  text-align: justify;;
+.kotakkomen--komen {
+  text-align: justify;
 }
 
-.home--review{
+.home--review {
   background: rgba(36, 193, 145, 0.17);
   margin-bottom: 100px;
   padding: 40px 20px 40px 20px;
@@ -1049,7 +1032,7 @@ p{
   flex-direction: column;
 }
 
-.home--review--row{
+.home--review--row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1057,15 +1040,10 @@ p{
   margin-right: 200px;
 }
 
-
-.home--started{
+.home--started {
   width: 240px;
   height: 75px;
-  background: linear-gradient(
-    to right,
-   #119ABE 0%, 
-   #24c191 80%
-   );
+  background: linear-gradient(to right, #119abe 0%, #24c191 80%);
   box-shadow: -4px 4px 15px -6px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   margin-bottom: 20px;
@@ -1074,12 +1052,8 @@ p{
   justify-content: center;
 }
 
-.home--started:hover{
-  background: linear-gradient(
-    to left,
-   #119ABE 0%, 
-   #24c191 80%
-   );
+.home--started:hover {
+  background: linear-gradient(to left, #119abe 0%, #24c191 80%);
 }
 
 .home--started--text {
@@ -1087,7 +1061,7 @@ p{
   font-size: 24px;
   line-height: 25px;
   width: 232px;
-  color : white;
+  color: white;
 }
 
 .home--start--container {

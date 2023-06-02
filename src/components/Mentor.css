@@ -13,7 +13,7 @@
 }
 
 .mentor--image {
-  width: 360px;
+  width: 100%;
 }
 
 .mentor--name {
@@ -22,6 +22,7 @@
   font-size: 2rem;
   margin-top: 30px;
   margin-left: 1rem;
+  width: 100%;
 }
 
 .mentor--konten {
@@ -62,7 +63,7 @@
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  width: 20rem;
+  width: 90%;
 }
 
 .mentor--add {
@@ -73,7 +74,7 @@
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  width: 20rem;
+  width: 90%;
   background: rgba(36, 193, 145, 0.17);
   border-radius: 20px;
   padding: 0rem 0rem;

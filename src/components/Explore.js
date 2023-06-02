@@ -5,7 +5,7 @@ import Mentor from "./Mentor";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Projectbox from "./Projectbox";
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth } from "../context/AuthContext";
 
 export default function Explore() {
   const { user, setUser } = UserAuth();
@@ -28,7 +28,7 @@ export default function Explore() {
   const [allProjects, setAllProjects] = useState([]);
   const [projectsFiltered, setProjectsData] = useState([0]);
   const [projectsId, setProjectsId] = useState(["Empty"]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   // Fetch data from Firebase for all mentors
@@ -39,20 +39,22 @@ export default function Explore() {
       );
       const data = await response.json(); //udah pasti ada
 
-      const mentors = Object.keys(data)
-        .map((mentorId) => {
-          return {
-            id: mentorId,
-            ...data[mentorId],
-          };
-        });
+      const mentors = Object.keys(data).map((mentorId) => {
+        return {
+          id: mentorId,
+          ...data[mentorId],
+        };
+      });
 
       // Update the state with the mentors data
       setAllMentors(mentors);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   // Fetch data from Firebase for mentors that the users have added to their session
   const fetchAllMentorsSession = async () => {
@@ -74,7 +76,10 @@ export default function Explore() {
 
       setMentorsId(mentorsIds);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
   };
 
@@ -98,9 +103,12 @@ export default function Explore() {
       // Update the state with the mentors data
       setMentorsFiltered(mentors);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   // Fetch data from Firebase for all projects
   const fetchAllProjects = async () => {
@@ -110,20 +118,22 @@ export default function Explore() {
       );
       const data = await response.json();
 
-      const projects = Object.keys(data)
-        .map((projectId) => {
-          return {
-            id: projectId,
-            ...data[projectId],
-          };
-        });
+      const projects = Object.keys(data).map((projectId) => {
+        return {
+          id: projectId,
+          ...data[projectId],
+        };
+      });
 
       // Update the state with the projects data
       setAllProjects(projects);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   // Fetch data from Firebase for projects that the users have added to their session
   const fetchAllProjectsSession = async () => {
@@ -145,7 +155,10 @@ export default function Explore() {
 
       setProjectsId(projectsIds);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
   };
 
@@ -169,9 +182,12 @@ export default function Explore() {
       // Update the state with the projects data
       setProjectsData(projects);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -179,25 +195,32 @@ export default function Explore() {
         await fetchAllMentorsSession();
       }
       // wait
-      await new Promise(r => setTimeout(r, 500));
+      await new Promise((r) => setTimeout(r, 500));
       await fetchAllMentors();
       await fetchAllMentorsExceptSession();
 
-      console.log("allMentors", allMentors)
-      console.log("mentorsId[0]", mentorsId[0])
-      console.log("mentorsFiltered", mentorsFiltered)
-      if (mentorsId.length === 1 && mentorsId[0] === "Empty" && (mentorsFiltered.length === allMentors.length)) {
+      console.log("allMentors", allMentors);
+      console.log("mentorsId[0]", mentorsId[0]);
+      console.log("mentorsFiltered", mentorsFiltered);
+      if (
+        mentorsId.length === 1 &&
+        mentorsId[0] === "Empty" &&
+        mentorsFiltered.length === allMentors.length
+      ) {
         if (mentorsFiltered.length > 0) {
-          console.log("MASUK KE SINI 1")
+          console.log("MASUK KE SINI 1");
           setIsLoading(false);
         }
       } else {
-        if (mentorsFiltered.length > 0 && mentorsId.length > 0 && !(mentorsId[0] === "Empty")) {
-          console.log("MASUK KE SINI 2")
+        if (
+          mentorsFiltered.length > 0 &&
+          mentorsId.length > 0 &&
+          !(mentorsId[0] === "Empty")
+        ) {
+          console.log("MASUK KE SINI 2");
           setIsLoading(false);
         }
       }
-
     };
     fetchData();
   }, [user, mentorsId]);
@@ -214,7 +237,6 @@ export default function Explore() {
 
       // Fetch projects excluding the ones in the session
       await fetchAllProjectsExceptSession();
-
     };
 
     fetchProjects();
@@ -226,7 +248,7 @@ export default function Explore() {
 
   const handleAddToSession = () => {
     setMentor(false); // Set mentor state to false
-    navigate('/explore', { state: { mentorKondisi: true } }); // Navigate to /explore with mentorKondisi = false
+    navigate("/explore", { state: { mentorKondisi: true } }); // Navigate to /explore with mentorKondisi = false
   };
 
   const konten = () => {
@@ -234,8 +256,8 @@ export default function Explore() {
       const { name, company } = mentorData;
       const query = searchQuery.toLowerCase();
       return (
-        name && name.toLowerCase().includes(query) ||
-        company && company.toLowerCase().includes(query)
+        (name && name.toLowerCase().includes(query)) ||
+        (company && company.toLowerCase().includes(query))
       );
     });
 
@@ -243,8 +265,8 @@ export default function Explore() {
       const { name, company } = projectData;
       const query = searchQuery.toLowerCase();
       return (
-        name && name.toLowerCase().includes(query) ||
-        company && company.toLowerCase().includes(query)
+        (name && name.toLowerCase().includes(query)) ||
+        (company && company.toLowerCase().includes(query))
       );
     });
 
@@ -262,9 +284,11 @@ export default function Explore() {
               attendance={mentorData.attendance}
             />
           ));
-        } else if (mentorsFiltered.length === 0) { // && mentorsId.length > 0
+        } else if (mentorsFiltered.length === 0) {
+          // && mentorsId.length > 0
           return <p>Woah. You already add all the mentors to your session.</p>;
-        } else { // (mentorsId.length === 0)
+        } else {
+          // (mentorsId.length === 0)
           return <p>No Results Found</p>;
         }
       }
@@ -287,9 +311,11 @@ export default function Explore() {
               onAddToSession={handleAddToSession}
             />
           ));
-        } else if (projectsFiltered.length === 0) { // && projectsId.length > 0
+        } else if (projectsFiltered.length === 0) {
+          // && projectsId.length > 0
           return <p>Woah. You already add all the projects to your session.</p>;
-        } else { // (projectsId.length === 0)
+        } else {
+          // (projectsId.length === 0)
           return <p>No Results Found</p>;
         }
       }
@@ -297,9 +323,9 @@ export default function Explore() {
   };
 
   const onDifficultyChange = (event) => {
-    if (event.target.value === 'easy') {
+    if (event.target.value === "easy") {
       setMentor(true);
-    } else if (event.target.value === 'medium') {
+    } else if (event.target.value === "medium") {
       setMentor(false);
     }
   };
@@ -329,16 +355,14 @@ export default function Explore() {
         </label>
       </div>
       <div className="explore--search">
-        <div className="search--container">
-          <BsSearch className="explore--search--icon" />
-          <input
-            type="text"
-            placeholder="Search by name or company"
-            className="explore--search--input"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-        </div>
+        <BsSearch className="explore--search--icon" />
+        <input
+          type="text"
+          placeholder="Search by name or company"
+          className="explore--search--input"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
         <div className="filter--container">
           <IoFilter className="explore--search--filter" />
           <p className="filter--teks">Filter</p>
