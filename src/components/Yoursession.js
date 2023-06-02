@@ -10,6 +10,7 @@ export default function Yoursession() {
   const { user, setUser } = UserAuth();
   const [usersMentors, setUsersMentors] = useState([]);
   const [usersProjects, setUsersProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add isLoading state
 
   // Fetch data from Firebase for mentors that the users have added to their session
   const fetchUsersMentors = async () => {
@@ -51,14 +52,19 @@ export default function Yoursession() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true); // Set isLoading to true before fetching data
+
       await fetchUsersMentors();
       await fetchUsersProjects();
+
+      // wait
+      setTimeout(() => {
+        setIsLoading(false); // Set isLoading to false after fetching data
+      }, 500);
     };
 
     fetchData();
-  }, [usersMentors]);
-
-
+  }, [user]);
 
   return (
     <div className="urses">
@@ -100,61 +106,43 @@ export default function Yoursession() {
       </div>
 
       <div className="urses--mentor--container">
-        {clickmentor ? (
+        {isLoading ? (
+          <div className="loader"></div>
+        ) : clickmentor ? (
           <>
-            {usersMentors.map((mentorData) => (
-              <Mentorsession
-                id={mentorData.id}
-                nama={mentorData.name}
-                profesi={mentorData.company}
-              />
-            ))}
+            {usersMentors.length === 0 ? (
+              <p>You have no mentors added to your session. Please go to the Explore section to add mentors to your session.</p>
+            ) : (
+              usersMentors.map((mentorData) => (
+                <Mentorsession
+                  id={mentorData.id}
+                  nama={mentorData.name}
+                  profesi={mentorData.company}
+                />
+              ))
+            )}
           </>
         ) : (
           <>
-            {usersProjects.map((projectData) => (
-              <Projsession
-                id={projectData.id}
-                tanggal={projectData.tanggal} // {projectData.tanggal}
-                deadline={projectData.deadline}
-                nama={projectData.name}
-                value={projectData.value}
-                status="progress"
-              />
-            ))}
-            {/* <Projsession
-              tanggal="July 30 2023"
-              deadline="4 weeks"
-              nama="Pornhub Mobile"
-              value="Rp.100.000.000"
-              status="progress"
-            />
-
-            <Projsession
-              tanggal="June 17 2023"
-              deadline="1 weeks"
-              nama="Help Pals"
-              value="Rp.1.000.000"
-              status="done"
-            />
-
-            <Projsession
-              tanggal="June 15 2023"
-              deadline="6 weeks"
-              nama="LMS 70 JKT"
-              value="Rp.2.000.000"
-              status="progress"
-            />
-
-            <Projsession
-              tanggal="June 07 2023"
-              deadline="2 weeks"
-              nama="Ashwa"
-              value="Rp.3.000.000"
-              status="done"
-            /> */}
+            {
+              usersProjects.length === 0 ? (
+                <p>You have no projects added to your session. Please go to the Explore section to add projects to your session.</p>
+              ) : (
+                usersProjects.map((projectData) => (
+                  <Projsession
+                    id={projectData.id}
+                    tanggal={projectData.tanggal} // {projectData.tanggal}
+                    deadline={projectData.deadline}
+                    nama={projectData.name}
+                    value={projectData.value}
+                    status="progress"
+                  />
+                ))
+              )
+            }
           </>
-        )}
+        )
+        }
       </div>
     </div>
   );
