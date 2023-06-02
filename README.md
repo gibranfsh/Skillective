@@ -2,4 +2,4 @@
 - clone
 - cd skillective
 - install node modulenya (npm install)
-- run (npm start)
+- run (npm run start)
