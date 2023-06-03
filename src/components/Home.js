@@ -6,9 +6,12 @@ import KotakKomen from "./KotakKomen";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./Home.css";
+import { UserAuth } from '../context/AuthContext';
 
 export function Home() {
   const [home, setHome] = useState(true);
+  const { user, setUser } = UserAuth();
+
   useEffect(() => {
     AOS.init({
       once: true,
@@ -243,11 +246,11 @@ export function Home() {
         goals and overcome any difficulties.
       </p>
 
-      <div className="home--start--container">
+      {!user&&<div className="home--start--container">
         <div className="home--started" data-aos="zoom-in">
           <h1 className="home--started--text">Get Started!</h1>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

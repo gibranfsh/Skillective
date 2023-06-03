@@ -45,7 +45,7 @@ function Footer() {
       <div className="footer--sosmed">
         <img src="twitterfooter.png" alt="twitter" className="footer--sosmed--icon" />
         <img src="insta.png" alt="instagram" className="footer--sosmed--icon" />
-        <img src="tiktok.png" alt="tiktok" className="footer--sosmed--icon" />
+        <img src="discord.png" alt="tiktok" className="footer--sosmed--icon" style={{borderRadius:"12px"}} />
       </div>
 
       <div className="row3">
