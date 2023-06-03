@@ -307,6 +307,7 @@ export default function Explore() {
               image={projectData.image}
               desc={projectData.desc}
               tanggal={projectData.tanggal}
+              type={projectData.type}
               status="progress"
               onAddToSession={handleAddToSession}
             />

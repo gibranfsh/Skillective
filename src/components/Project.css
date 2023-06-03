@@ -1,0 +1,11 @@
+.project-page {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .project-page__description {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+    

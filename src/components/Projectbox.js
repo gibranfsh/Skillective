@@ -20,6 +20,7 @@ export default function Projectbox(props) {
       image: props.image, // The project's image
       desc: props.desc, // The project's desc
       tanggal: props.tanggal, // The project's tanggal
+      type: props.type, // The project's type
       status: props.status, // The project's status
     };
 
@@ -59,7 +60,7 @@ export default function Projectbox(props) {
 
         <div className="mentor--star">
           <AiFillStar className="mentor--star--icon" />
-          <p>Matches your profile!</p>
+          <p>{props.type}</p>
         </div>
 
         <div className="mentor--container--bawah">
