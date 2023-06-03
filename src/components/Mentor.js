@@ -82,12 +82,12 @@ export default function Mentor(props) {
         <h3 className="mentor--name">{props.name}</h3>
         <div className="mentor--company">
           <BsFillBagFill className="mentor--company--icon" />
-          <p>{props.company}</p>
+          <p>{props.job}</p>
         </div>
 
         <div className="mentor--star">
           <AiFillStar className="mentor--star--icon" />
-          <p>New Mentor</p>
+          <p>{props.company}</p>
         </div>
       </div>
       <div className="mentor--container--bawah">

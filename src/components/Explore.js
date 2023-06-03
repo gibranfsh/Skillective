@@ -9,7 +9,7 @@ import { UserAuth } from "../context/AuthContext";
 
 export default function Explore() {
   const { user, setUser } = UserAuth();
-  console.log("user", user);
+  console.log("user121212", user.birthdate);
   // if (user) {
   //   console.log("user.uid", user.uid);
   //   if (user.uid) {
@@ -282,6 +282,7 @@ export default function Explore() {
               company={mentorData.company}
               experience={mentorData.experience}
               attendance={mentorData.attendance}
+              job={mentorData.job}
             />
           ));
         } else if (mentorsFiltered.length === 0) {
