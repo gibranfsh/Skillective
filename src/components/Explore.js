@@ -370,13 +370,23 @@ export default function Explore() {
       </div>
       <div className="explore--search">
         <BsSearch className="explore--search--icon" />
-        <input
-          type="text"
-          placeholder="Search by name or company"
-          className="explore--search--input"
-          value={searchQuery}
-          onChange={handleSearch}
-        />
+        {mentor ? (
+          <input
+            type="text"
+            placeholder="Search by mentor's name, job, or company"
+            className="explore--search--input"
+            value={searchQuery}
+            onChange={handleSearch}
+          />) : (
+            <input
+            type="text"
+            placeholder="Search by project's name or type"
+            className="explore--search--input"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+          )
+        }
         <div className="filter--container">
           {mentor ? (
             <select
