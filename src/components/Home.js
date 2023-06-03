@@ -187,34 +187,34 @@ export function Home() {
       <div className="home--mentor">
         <div className="home--mentor--row" data-aos="fade-left">
           <KotakMentor
-            image="fotomentor/gibeh.jpg"
-            nama="Testing123"
-            jabatan="Head of Engineering"
-            org="Gojek"
-            exp="7 years"
+            image="fotomentor/42323112.jpg"
+            nama="Tsamania Salsabila"
+            jabatan="IoT Engineer"
+            org="Finplan"
+            exp="1 year"
           />
           <KotakMentor
-            image="fotomentor/auva.jpg"
-            nama="Auvarifqi"
-            jabatan="Head of Product"
-            org="Shopee"
+            image="fotomentor/5467256721.jpg"
+            nama="Enrique Equillibrie"
+            jabatan="IT Analyst"
+            org="Lazada"
             exp="5 years"
           />
         </div>
         <div className="home--mentor--row" data-aos="fade-right">
           <KotakMentor
-            image="fotomentor/iyal.jpg"
-            nama="Iyal"
-            jabatan="Head of Engineering"
-            org="Tokopedia"
-            exp="7 years"
+            image="fotomentor/123456789.jpg"
+            nama="Johanna Christopher"
+            jabatan="Product Manager"
+            org="Google"
+            exp="2 years"
           />
           <KotakMentor
-            image="fotomentor/naufal.jpg"
-            nama="Naufal"
-            jabatan="Head of Data"
-            org="Tiket.com"
-            exp="5 years"
+            image="fotomentor/auva.jpg"
+            nama="Putra Mahardika"
+            jabatan="Data Scientist"
+            org="Twitter"
+            exp="3 years"
           />
         </div>
       </div>
@@ -226,14 +226,14 @@ export function Home() {
             image="fotomentor/adre.jpg"
             komen="Skillective is a great platform to learn and develop skills. I learn lot of new skills from my beloved mentor"
             nama="Adrenalin"
-            jabatan="Student"
+            jabatan="Fresh Graduate Student"
             org="Bandung Institute of Technology"
           />
           <KotakKomen
             image="fotomentor/abam.jpg"
             komen="Skillective gave me tons of insight to help me escalate my career. Thank you Skillective!"
             nama="Abraham"
-            jabatan="Student"
+            jabatan="Undergraduate Student"
             org="Massachusetts Institute of Technology"
           />
         </div>

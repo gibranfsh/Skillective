@@ -9,16 +9,8 @@ import { UserAuth } from "../context/AuthContext";
 
 export default function Explore() {
   const { user, setUser } = UserAuth();
-  console.log("user121212", user.birthdate);
-  // if (user) {
-  //   console.log("user.uid", user.uid);
-  //   if (user.uid) {
-  //     console.log("MEMEK");
-  //   }
-  // }
   const navigate = useNavigate();
   const { state } = useLocation();
-  // console.log("state", state);
   const mentorState = state?.mentorKondisi;
   console.log("mentorState", mentorState);
   const [mentor, setMentor] = useState(!mentorState);
@@ -30,6 +22,9 @@ export default function Explore() {
   const [projectsId, setProjectsId] = useState(["Empty"]);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState("ascending");
+  const [selectedJobFilter, setSelectedJobFilter] = useState("");
+  const [selectedTypeFilter, setSelectedTypeFilter] = useState("");
 
   // Fetch data from Firebase for all mentors
   const fetchAllMentors = async () => {
@@ -244,6 +239,8 @@ export default function Explore() {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
+    setSelectedJobFilter("");
+    setSelectedTypeFilter("");
   };
 
   const handleAddToSession = () => {
@@ -251,22 +248,34 @@ export default function Explore() {
     navigate("/explore", { state: { mentorKondisi: true } }); // Navigate to /explore with mentorKondisi = false
   };
 
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
+  };
+
   const konten = () => {
+    // Filter mentors by search query
     const filteredMentors = mentorsFiltered.filter((mentorData) => {
-      const { name, company } = mentorData;
+      const { name, company, job } = mentorData;
       const query = searchQuery.toLowerCase();
+      const jobFilter = selectedJobFilter.toLowerCase();
+      console.log("selectedJobFilter", selectedJobFilter);
       return (
-        (name && name.toLowerCase().includes(query)) ||
+        (name && name.toLowerCase().includes(query)) &&
+        (jobFilter === "" || job && job.toLowerCase() === jobFilter) &&
         (company && company.toLowerCase().includes(query))
       );
     });
 
+    // Filter projects by search query
     const filteredProjects = projectsFiltered.filter((projectData) => {
-      const { name, company } = projectData;
+      console.log("projectsFilteredprojectsFiltered", projectsFiltered)
+      const { name, type } = projectData;
       const query = searchQuery.toLowerCase();
+      const typeFilter = selectedTypeFilter.toLowerCase();
+      console.log("selectedTypeFilter", selectedTypeFilter);
       return (
-        (name && name.toLowerCase().includes(query)) ||
-        (company && company.toLowerCase().includes(query))
+        (name && name.toLowerCase().includes(query)) &&
+        (typeFilter === "" || type && type.toLowerCase() === typeFilter)
       );
     });
 
@@ -274,6 +283,7 @@ export default function Explore() {
       if (isLoading) {
         return <div className="loader"></div>;
       } else {
+        console.log("filteredMentors", filteredMentors);
         if (filteredMentors.length > 0) {
           return filteredMentors.map((mentorData) => (
             <Mentor
@@ -283,6 +293,7 @@ export default function Explore() {
               experience={mentorData.experience}
               attendance={mentorData.attendance}
               job={mentorData.job}
+              image={mentorData.image}
             />
           ));
         } else if (mentorsFiltered.length === 0) {
@@ -297,6 +308,7 @@ export default function Explore() {
       if (isLoading) {
         return <div class="loader"></div>;
       } else {
+        console.log("filteredProjects", filteredProjects);
         if (filteredProjects.length > 0) {
           return filteredProjects.map((projectData) => (
             <Projectbox
@@ -366,11 +378,51 @@ export default function Explore() {
           onChange={handleSearch}
         />
         <div className="filter--container">
-          <IoFilter className="explore--search--filter" />
-          <p className="filter--teks">Filter</p>
+          {mentor ? (
+            <select
+              value={selectedJobFilter}
+              onChange={(e) => setSelectedJobFilter(e.target.value)}
+              className="explore--search--filter"
+            >
+              <option value="">Filter by Job</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="Front-end Developer">Front-end Developer</option>
+              <option value="Full-stack Developer">Full-stack Developer</option>
+              <option value="IoT Engineer">IoT Engineer</option>
+              <option value="IT Analyst">IT Analyst</option>
+              <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+              <option value="Product Manager">Product Manager</option>
+              <option value="UI/UX Designer">UI/UX Designer</option>
+              {/* Add more job options */}
+            </select>
+          ) : (
+            <select
+              value={selectedTypeFilter}
+              onChange={(e) => setSelectedTypeFilter(e.target.value)}
+              className="explore--search--filter"
+            >
+              <option value="">Filter by Type</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Data Engineering">Data Engineering</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Product Management">Product Management</option>
+              <option value="Mobile App Development">Mobile App Development</option>
+              <option value="Machine Learning">Machine Learning</option>
+              <option value="Artificial Intelligence">Artificial Intelligence</option>
+              <option value="Game Development">Game Development</option>
+              <option value="Blockchain">Blockchain</option>
+              <option value="Internet of Things">Internet of Things</option>
+              <option value="Cloud Computing">Cloud Computing</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Quality Assurance">Quality Assurance</option>
+              {/* Add more type options */}
+            </select>
+          )
+          }
         </div>
       </div>
       <div className="kotak--container">{konten()}</div>
     </div>
   );
 }
+

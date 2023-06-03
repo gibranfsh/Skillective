@@ -47,6 +47,8 @@ export default function Mentor(props) {
       name: props.name, // The mentor's name
       company: props.company, // The mentor's company
       experience: props.experience, // The mentor's experience
+      job: props.job, // The mentor's job
+      image: imageUrl, // The mentor's profile picture
     };
 
     // Prepare the request options

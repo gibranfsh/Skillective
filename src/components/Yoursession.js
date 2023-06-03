@@ -107,7 +107,7 @@ export default function Yoursession() {
 
       <div className="urses--mentor--container">
         {isLoading ? (
-          <div className="loader" style={{alignSelf:"center"}}></div>
+          <div className="loader" style={{ alignSelf: "center" }}></div>
         ) : clickmentor ? (
           <>
             {usersMentors.length === 0 ? (
@@ -115,9 +115,10 @@ export default function Yoursession() {
             ) : (
               usersMentors.map((mentorData) => (
                 <Mentorsession
-                  id={mentorData.id}
+                  mentorId={mentorData.mentorId}
                   nama={mentorData.name}
                   profesi={mentorData.company}
+                  job={mentorData.job}
                   image={mentorData.image}
                 />
               ))
