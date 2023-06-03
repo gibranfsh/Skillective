@@ -1,11 +1,39 @@
 import { BsFillBagFill } from "react-icons/bs";
 import { AiFillStar, AiOutlinePlusCircle } from "react-icons/ai";
-import { app, auth, database } from "../firebase";
+import { useEffect, useState } from "react";
+import { storage, database, auth } from '../firebase';
+import { getDownloadURL, ref as sRef } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
 import { UserAuth } from '../context/AuthContext';
 import "./Mentor.css";
 
 export default function Mentor(props) {
   const { user, setUser } = UserAuth();
+  const [imageUrl, setImageUrl] = useState("");
+  const imageName = "mentorsprofilepicture/" + props.id + ".jpg";
+
+  // const getDownloadableURL = async () => {
+  //   try {
+  //     const storageRef = sRef(storage, imageName);
+  //     const downloadURL = await getDownloadURL(storageRef);
+  //     return downloadURL;
+  //   } catch (error) {
+  //     console.error("Error getting download URL:", error);
+  //   }
+  // };
+
+  useEffect(() => {
+    const fetchImageURL = async () => {
+      try {
+        const storageRef = sRef(storage, imageName);
+        const downloadURL = await getDownloadURL(storageRef);
+        setImageUrl(downloadURL);
+      } catch (error) {
+        console.error("Error getting download URL:", error);
+      }
+    };
+
+    fetchImageURL();
+  }, [imageName]);
 
   const handleAddToSession = async () => {
     // Prepare the data to be posted to the database
@@ -35,13 +63,15 @@ export default function Mentor(props) {
         console.error('Error adding data to usersmentors node:', error);
       });
 
-      // refresh the page after adding a mentor to the session
-      window.location.reload();
+    // refresh the page after adding a mentor to the session
+    window.location.reload();
   };
 
   return (
     <div className="mentor--container">
-      <img src="cewe.svg" alt="cewe" className="mentor--image" />
+      {imageUrl && (
+        <img src={imageUrl} alt={props.name} className="mentor--image" />
+      )}
       <div className="mentor--konten">
         <h3 className="mentor--name">{props.name}</h3>
         <div className="mentor--company">
