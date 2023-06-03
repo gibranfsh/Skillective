@@ -2,6 +2,7 @@ import { BsFillBagFill } from "react-icons/bs";
 import { AiFillStar, AiOutlinePlusCircle } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import { storage, database, auth } from "../firebase";
+import {MdLocationCity} from "react-icons/md";
 import {
   getDownloadURL,
   ref as sRef,
@@ -86,7 +87,7 @@ export default function Mentor(props) {
         </div>
 
         <div className="mentor--star">
-          <AiFillStar className="mentor--star--icon" />
+          <MdLocationCity className="mentor--star--icon" />
           <p>{props.company}</p>
         </div>
       </div>

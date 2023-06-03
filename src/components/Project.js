@@ -233,7 +233,7 @@ const Project = () => {
                                 submission through your email. Thank you!
                             </p>
                         </div>
-                        <button className="login--submit">Submit</button>
+                        <button className="login--submit" style={{paddingTop:"0.8rem"}}>Submit</button>
                     </form>
                 </div>
             </div>
