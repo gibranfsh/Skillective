@@ -25,7 +25,6 @@ const Signup = () => {
     const nameRef = useRef();
     const occupationRef = useRef();
     const phoneRef = useRef();
-    const contributeRef = useRef();
     const { googleSignIn, facebookSignIn, user } = UserAuth();
     const navigate = useNavigate();
 
@@ -39,7 +38,6 @@ const Signup = () => {
         const name = nameRef.current.value;
         const occupation = occupationRef.current.value;
         const phone = phoneRef.current.value;
-        const contribute = contributeRef.current.value;
 
         if (password !== passwordConfirm) {
             alert("Password doesn't match");
@@ -59,7 +57,6 @@ const Signup = () => {
                         email: email,
                         occupation: occupation,
                         phone: phone,
-                        contribute: contribute,
                         last_login: dt.toString()
                     });
 
