@@ -43,8 +43,8 @@ export default function NavigationBar() {
                 <Nav.Link href="/yoursession"><span className='choice2'>Your Session</span></Nav.Link>
               </div> :
               <div className="navbar--pilihan">
-                <Nav.Link href="/login"><span className='choice1'>Become a Mentor</span></Nav.Link>
-                <Nav.Link href="/login"><span className='choice2'>Find a Mentor</span></Nav.Link>
+                <Nav.Link href="/login"><span className='choice1'>Find a Mentor</span></Nav.Link>
+                <Nav.Link href="/login"><span className='choice2'>Find a Project</span></Nav.Link>
               </div>
               }
           </div>

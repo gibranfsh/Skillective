@@ -3,7 +3,7 @@ import "./Yoursession.css"
 export default function Mentorsession(props) {
     return (
         <div className="urses--mentor">
-            <img src="/mentor.svg" alt="mentor" />
+            <img src="/mentor.svg" alt="mentor" className="mentor--session--img" />
 
             <div className="urses--mentor--info">
                 <h3>{props.nama}</h3>

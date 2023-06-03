@@ -52,11 +52,11 @@ export default function Projectbox(props) {
   };
 
   return (
-    <div className="mentor--container">
+    <div className="project--container">
       <img src={props.image} alt="cewe" className="mentor--image" />
       <div className="mentor--konten">
-        <h3 className="mentor--name">{props.name}</h3>
-        <p style={{ textAlign: "justify", marginLeft: "1rem" }}>{props.desc}</p>
+        <h3 className="project--name">{props.name}</h3>
+        <p style={{ textAlign: "justify", marginLeft: "1rem", height:"205px" }}>{props.desc}</p>
 
         <div className="mentor--star">
           <AiFillStar className="mentor--star--icon" />

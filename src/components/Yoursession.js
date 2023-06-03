@@ -107,7 +107,7 @@ export default function Yoursession() {
 
       <div className="urses--mentor--container">
         {isLoading ? (
-          <div className="loader"></div>
+          <div className="loader" style={{alignSelf:"center"}}></div>
         ) : clickmentor ? (
           <>
             {usersMentors.length === 0 ? (
@@ -118,6 +118,7 @@ export default function Yoursession() {
                   id={mentorData.id}
                   nama={mentorData.name}
                   profesi={mentorData.company}
+                  image={mentorData.image}
                 />
               ))
             )}
@@ -135,6 +136,7 @@ export default function Yoursession() {
                     deadline={projectData.deadline}
                     nama={projectData.name}
                     value={projectData.value}
+                    image={projectData.image}
                     status="progress"
                   />
                 ))

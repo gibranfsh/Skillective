@@ -63,7 +63,8 @@
   margin-top: 80px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+
 }
 
 .urses--proj {
@@ -98,4 +99,10 @@
 .urses--proj--status--done {
     background-color: #24c191;
     color:white
+}
+
+.mentor--session--img {
+  width : 10rem;
+  object-fit: contain;
+  border-radius: 50%;
 }

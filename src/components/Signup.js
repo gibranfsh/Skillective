@@ -110,12 +110,12 @@ const Signup = () => {
                     <input className="login--input" type="text" placeholder="Your Email Address" required ref={emailRef} />
                     <label className="login--label">Phone Number*</label>
                     <input className="login--input" type="tel" placeholder="Your Phone Number" required ref={phoneRef} />
-                    <label className="login--label">Contribute as*</label>
+                    {/* <label className="login--label">Contribute as*</label>
                     <select className="login--input" name="contribute" id="contribute" required ref={contributeRef}>
                         <option value="student" className="signup--pilihan">Mentee</option>
                         <option value="teacher">Mentor</option>
                         <option value="organization">Organization</option>
-                    </select>
+                    </select> */}
                     <label className="login--label">Password*</label>
                     <input className="pw--input" type="password" placeholder="Your Password" required ref={passwordRef} />
                     <p className="pw--alert">Make sure your password contains 6-12 characters with numbers or letters</p>
@@ -132,9 +132,6 @@ const Signup = () => {
                 <div className="signup--logo">
                     <button className="signup--sosmed" onClick={handleRegisterGoogle}>
                         <img className="sosmed--img--signup" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google" />
-                    </button>
-                    <button className="signup--sosmed" onClick={handleRegisterFacebook}>
-                        <img className="sosmed--img--signup" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="facebook" />
                     </button>
                 </div>
 
