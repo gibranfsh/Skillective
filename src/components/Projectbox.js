@@ -65,7 +65,7 @@ export default function Projectbox(props) {
 
         <div className="mentor--container--bawah">
           <div className="mentor--container--exp">
-            <p>Value</p>
+            <p>Bonus</p>
             <strong>{props.value}</strong>
           </div>
           <div className="mentor--container--att">
