@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { UserAuth } from '../context/AuthContext';
 import "./Profile.css";
 
 export default function ProfilePage() {
+  const { user } = UserAuth();
   const [username, setUsername] = useState();
-
+  console.log(user);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [age, setAge] = useState();
@@ -11,20 +13,24 @@ export default function ProfilePage() {
   const [birthDay, setBirthDay] = useState();
   const [birthMonth, setBirthMonth] = useState();
   const [birthYear, setBirthYear] = useState();
+  const [isLoading, setIsLoading] = useState(true); // Add isLoading state
 
   const [experience1, setExperience1] = useState();
   const [experience2, setExperience2] = useState();
   const [experience3, setExperience3] = useState();
+  // return <div class="loader"></div>;
 
   useEffect(() => {
-    setUsername("Gijax");
-  }, []);
+    setTimeout(() => {
+      setIsLoading(false); // Set isLoading to false after fetching data
+    } , 1000);
+  }, [user]);
 
   return (
     <main className="profile-page-container">
       <h1 className="profile-header">My Profile</h1>
       <form className="profile-container" onSubmit={(e) => e.preventDefault()}>
-        <h2 className="profile-username">Hi, {username}!</h2>
+        <h2 className="profile-username">Hi, {user.displayName}!</h2>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ width: "33.4vw" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -38,11 +44,11 @@ export default function ProfilePage() {
                 onChange={(e) => setName(e.target.value)}
               /> */}
               <h5 className="profile-label">Name</h5>
-              <p className="profile-entry">{name || "Gijax HD Ghazanfar"}</p>
+              <p className="profile-entry">{user.displayName}</p>
             </div>
 
             <div style={{ display: "flex", marginTop: 24 }}>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -52,9 +58,9 @@ export default function ProfilePage() {
                 <div>
                   <p className="profile-entry">{birthDay || "29-03-2004"}</p>
                 </div>
-              </div>
+              </div> */}
 
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -63,14 +69,14 @@ export default function ProfilePage() {
               >
                 <h5 className="profile-label">Age</h5>
                 <p className="profile-entry">{age || "19"}</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
           <div style={{ width: "33.4vw" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <h5 className="profile-label">Email</h5>
-              <p className="profile-entry">{email || "gijaxhd@gmail.com"}</p>
+              <p className="profile-entry">{user.email}</p>
             </div>
 
             <div
