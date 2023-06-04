@@ -23,8 +23,6 @@ export default function Explore() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState("ascending");
-  const [selectedJobFilter, setSelectedJobFilter] = useState("");
-  const [selectedTypeFilter, setSelectedTypeFilter] = useState("");
 
   // Fetch data from Firebase for all mentors
   const fetchAllMentors = async () => {
@@ -239,8 +237,6 @@ export default function Explore() {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
-    setSelectedJobFilter("");
-    setSelectedTypeFilter("");
   };
 
   const handleAddToSession = () => {
@@ -257,33 +253,46 @@ export default function Explore() {
     const filteredMentors = mentorsFiltered.filter((mentorData) => {
       const { name, company, job } = mentorData;
       const query = searchQuery.toLowerCase();
-      const jobFilter = selectedJobFilter.toLowerCase();
-      console.log("selectedJobFilter", selectedJobFilter);
       return (
-        (name && name.toLowerCase().includes(query)) &&
-        (jobFilter === "" || job && job.toLowerCase() === jobFilter) &&
-        (company && company.toLowerCase().includes(query))
+        (name && name.toLowerCase().includes(query)) ||
+        (company && company.toLowerCase().includes(query)) ||
+        (job && job.toLowerCase().includes(query))
       );
+    });
+
+    // Sort mentors by name
+    const sortedMentors = filteredMentors.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      return sortOrder === "ascending"
+        ? nameA.localeCompare(nameB)
+        : nameB.localeCompare(nameA);
     });
 
     // Filter projects by search query
     const filteredProjects = projectsFiltered.filter((projectData) => {
-      console.log("projectsFilteredprojectsFiltered", projectsFiltered)
-      const { name, type } = projectData;
+      const { name, company, type } = projectData;
       const query = searchQuery.toLowerCase();
-      const typeFilter = selectedTypeFilter.toLowerCase();
-      console.log("selectedTypeFilter", selectedTypeFilter);
       return (
-        (name && name.toLowerCase().includes(query)) &&
-        (typeFilter === "" || type && type.toLowerCase() === typeFilter)
+        (name && name.toLowerCase().includes(query)) ||
+        (company && company.toLowerCase().includes(query)) ||
+        (type && type.toLowerCase().includes(query))
       );
+    });
+
+    // Sort projects by name
+    const sortedProjects = filteredProjects.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      return sortOrder === "ascending"
+        ? nameA.localeCompare(nameB)
+        : nameB.localeCompare(nameA);
     });
 
     if (mentor) {
       if (isLoading) {
         return <div className="loader"></div>;
       } else {
-        console.log("filteredMentors", filteredMentors);
         if (filteredMentors.length > 0) {
           return filteredMentors.map((mentorData) => (
             <Mentor
@@ -308,7 +317,6 @@ export default function Explore() {
       if (isLoading) {
         return <div class="loader"></div>;
       } else {
-        console.log("filteredProjects", filteredProjects);
         if (filteredProjects.length > 0) {
           return filteredProjects.map((projectData) => (
             <Projectbox
@@ -370,69 +378,19 @@ export default function Explore() {
       </div>
       <div className="explore--search">
         <BsSearch className="explore--search--icon" />
-        {mentor ? (
-          <input
-            type="text"
-            placeholder="Search by mentor's name, job, or company"
-            className="explore--search--input"
-            value={searchQuery}
-            onChange={handleSearch}
-          />) : (
-            <input
-            type="text"
-            placeholder="Search by project's name or type"
-            className="explore--search--input"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-          )
-        }
-        <div className="filter--container">
-          {mentor ? (
-            <select
-              value={selectedJobFilter}
-              onChange={(e) => setSelectedJobFilter(e.target.value)}
-              className="explore--search--filter"
-            >
-              <option value="">Filter by Job</option>
-              <option value="Data Scientist">Data Scientist</option>
-              <option value="Front-end Developer">Front-end Developer</option>
-              <option value="Full-stack Developer">Full-stack Developer</option>
-              <option value="IoT Engineer">IoT Engineer</option>
-              <option value="IT Analyst">IT Analyst</option>
-              <option value="Machine Learning Engineer">Machine Learning Engineer</option>
-              <option value="Product Manager">Product Manager</option>
-              <option value="UI/UX Designer">UI/UX Designer</option>
-              {/* Add more job options */}
-            </select>
-          ) : (
-            <select
-              value={selectedTypeFilter}
-              onChange={(e) => setSelectedTypeFilter(e.target.value)}
-              className="explore--search--filter"
-            >
-              <option value="">Filter by Type</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Data Engineering">Data Engineering</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Product Management">Product Management</option>
-              <option value="Mobile App Development">Mobile App Development</option>
-              <option value="Machine Learning">Machine Learning</option>
-              <option value="Artificial Intelligence">Artificial Intelligence</option>
-              <option value="Game Development">Game Development</option>
-              <option value="Blockchain">Blockchain</option>
-              <option value="Internet of Things">Internet of Things</option>
-              <option value="Cloud Computing">Cloud Computing</option>
-              <option value="Digital Marketing">Digital Marketing</option>
-              <option value="Quality Assurance">Quality Assurance</option>
-              {/* Add more type options */}
-            </select>
-          )
-          }
+        <input
+          type="text"
+          placeholder="Search by name or company"
+          className="explore--search--input"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+        <div className="filter--container cursor-pointer" onClick={toggleSortOrder}>
+          <IoFilter className="explore--search--filter"/>
+          <p className="filter--teks">Filter</p>
         </div>
       </div>
       <div className="kotak--container">{konten()}</div>
     </div>
   );
 }
-
