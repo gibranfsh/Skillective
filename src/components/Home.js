@@ -11,7 +11,7 @@ import { UserAuth } from '../context/AuthContext';
 export function Home() {
   const [home, setHome] = useState(true);
   const { user, setUser } = UserAuth();
-
+  console.log("Home", user)
   useEffect(() => {
     AOS.init({
       once: true,
