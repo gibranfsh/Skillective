@@ -22,17 +22,14 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        //diubah-ubah kepin
-        //gw ngubah unsubscribe jadi function bukan variable, jadi kalo di return itu jadi return function
-        const unsubscribe = () => {
-            onAuthStateChanged(auth, (currentUser) => {
-                setUser(currentUser)
-                console.log("Authcontext", currentUser)
-            })
-        }
-        return (() => {
-            unsubscribe()
-        })
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            console.log("Authcontext", currentUser);
+        });
+
+        return () => {
+            unsubscribe();
+        };
     }, []);
 
     return (
