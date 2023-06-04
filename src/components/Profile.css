@@ -1,0 +1,55 @@
+.profile-page-container {
+  padding: 133px 120px;
+}
+
+.profile-header {
+  text-align: left;
+  font-family: "Lato", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  padding-left: 12px;
+  margin-bottom: 20px;
+  color: #119abe;
+}
+
+.profile-container {
+  width: 100%;
+  background-color: #fdfdfd;
+  border-radius: 20px;
+  box-shadow: 0 -1px 18px rgba(0, 0, 0, 0.25);
+  padding: 29px 48px 49px 34px;
+}
+
+.profile-username {
+  color: #119abe;
+  font-size: 32px;
+  text-align: left;
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+}
+
+.profile-label {
+  text-align: left;
+  color: #119abe;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  /* padding-left: 8px; */
+}
+
+.profile-entry {
+  text-align: left;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+}
+
+.profile-input {
+  outline: none;
+  background-color: rgba(217, 217, 217, 0.12);
+  border-radius: 16px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  padding: 12px 12px 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
