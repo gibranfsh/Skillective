@@ -48,35 +48,9 @@ export default function ProfilePage() {
                   flexDirection: "column",
                 }}
               >
-                {/* <label htmlFor="day" className="profile-label">
-                  Date of Birth
-                </label>
-                <div style={{ display: "flex", gap: 16 }}>
-                  <input
-                    style={{ width: "7.1vw" }}
-                    id="day"
-                    className="profile-input"
-                    value={birthDay}
-                    onChange={(e) => setBirthDay(e.target.value)}
-                  />
-                  <input
-                    style={{ width: "7.1vw" }}
-                    id="day"
-                    className="profile-input"
-                    value={birthMonth}
-                    onChange={(e) => setBirthMonth(e.target.value)}
-                  />
-                  <input
-                    style={{ width: "9.3vw" }}
-                    id="day"
-                    className="profile-input"
-                    value={birthYear}
-                    onChange={(e) => setBirthYear(e.target.value)}
-                  />
-                </div> */}
                 <h5 className="profile-label">Date of Birth</h5>
                 <div>
-                  <p className="profile-entry">{birthDay || "29"}</p>
+                  <p className="profile-entry">{birthDay || "29-03-2004"}</p>
                 </div>
               </div>
 
@@ -84,35 +58,19 @@ export default function ProfilePage() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  marginLeft: 16,
+                  marginLeft: 72,
                 }}
               >
-                <label htmlFor="age" className="profile-label">
-                  Age
-                </label>
-                <input
-                  style={{ width: "6.3vw" }}
-                  id="age"
-                  className="profile-input"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                />
+                <h5 className="profile-label">Age</h5>
+                <p className="profile-entry">{age || "19"}</p>
               </div>
             </div>
           </div>
 
           <div style={{ width: "33.4vw" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <label htmlFor="email" className="profile-label">
-                Email
-              </label>
-              <input
-                id="email"
-                type="email"
-                className="profile-input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <h5 className="profile-label">Email</h5>
+              <p className="profile-entry">{email || "gijaxhd@gmail.com"}</p>
             </div>
 
             <div
@@ -121,19 +79,108 @@ export default function ProfilePage() {
                 flexDirection: "column",
                 marginTop: 24,
               }}
-            >
-              <label htmlFor="password" className="profile-label">
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                className="profile-input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+            ></div>
           </div>
+        </div>
+
+        <div
+          style={{
+            width: "100%",
+            height: 2,
+            backgroundColor: "#119ABE",
+            marginTop: 24,
+          }}
+        ></div>
+
+        <h2 style={{ marginTop: 36 }} className="profile-username">
+          Experiences
+        </h2>
+
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <input
+            id="exp1"
+            type="text"
+            className="profile-input"
+            value={experience1}
+            style={{ flexGrow: 1 }}
+          ></input>
+          <label
+            htmlFor="exp1"
+            style={{
+              cursor: "pointer",
+              marginLeft: 24,
+              borderRadius: 20,
+              backgroundColor: "#119ABE",
+              color: "white",
+              fontFamily: "Lato, sans-serif",
+              fontWeight: 600,
+              padding: "20px 20px",
+            }}
+          >
+            Edit Experience
+          </label>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: 42,
+          }}
+        >
+          <input
+            id="exp2"
+            type="text"
+            className="profile-input"
+            value={experience2}
+            style={{ flexGrow: 1 }}
+          ></input>
+          <label
+            htmlFor="exp2"
+            style={{
+              cursor: "pointer",
+              marginLeft: 24,
+              borderRadius: 20,
+              backgroundColor: "#119ABE",
+              color: "white",
+              fontFamily: "Lato, sans-serif",
+              fontWeight: 600,
+              padding: "20px 20px",
+            }}
+          >
+            Edit Experience
+          </label>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: 42,
+          }}
+        >
+          <input
+            id="exp3"
+            type="text"
+            className="profile-input"
+            value={experience3}
+            style={{ flexGrow: 1 }}
+          ></input>
+          <label
+            htmlFor="exp3"
+            style={{
+              cursor: "pointer",
+              marginLeft: 24,
+              borderRadius: 20,
+              backgroundColor: "#119ABE",
+              color: "white",
+              fontFamily: "Lato, sans-serif",
+              fontWeight: 600,
+              padding: "20px 20px",
+            }}
+          >
+            Edit Experience
+          </label>
         </div>
       </form>
     </main>
