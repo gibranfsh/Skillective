@@ -1,12 +1,11 @@
 import "./App.css";
 import { useState } from "react";
-import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Footer from "./components/Footer";
 import Project from "./components/Project";
-import Profile from "./components/Profile";
 import { Home } from "./components/Home";
 import { AuthContextProvider } from "./context/AuthContext";
 import Protected from "./components/Protected";
@@ -41,8 +40,7 @@ function App() {
               path="/project"
               element={
                 <Protected>
-                  {" "}
-                  <Project />{" "}
+                  <Project />
                 </Protected>
               }
             />

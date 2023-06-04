@@ -43,8 +43,8 @@ export default function NavigationBar() {
                 <Nav.Link href="/yoursession"><span className='choice2'>Your Session</span></Nav.Link>
               </div> :
               <div className="navbar--pilihan">
-                <Nav.Link href="/login"><span className='choice1'>Become a Mentor</span></Nav.Link>
-                <Nav.Link href="/login"><span className='choice2'>Find a Mentor</span></Nav.Link>
+                <Nav.Link href="/login"><span className='choice1'>Find a Mentor</span></Nav.Link>
+                <Nav.Link href="/login"><span className='choice2'>Find a Project</span></Nav.Link>
               </div>
               }
           </div>
@@ -56,12 +56,6 @@ export default function NavigationBar() {
                 <div className='navbar--drop'>
                   <NavDropdown.Item href="/" className='navbar--drop--item'>
                     <p >My Profile</p>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/" className='navbar--drop--item'>
-                    <p >Settings</p>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/" className='navbar--drop--item'>
-                    {user.role === 'mentee' ? <p>My Mentor</p> : <p>My Mentee</p>}
                   </NavDropdown.Item>
                   <NavDropdown.Item className='navbar--drop--item'>
                     <button onClick = {handleSignOut} className='navbar--signup--akun'>Sign Out</button>

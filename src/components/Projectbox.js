@@ -20,6 +20,7 @@ export default function Projectbox(props) {
       image: props.image, // The project's image
       desc: props.desc, // The project's desc
       tanggal: props.tanggal, // The project's tanggal
+      type: props.type, // The project's type
       status: props.status, // The project's status
     };
 
@@ -47,23 +48,24 @@ export default function Projectbox(props) {
     // BLM BISA GATAU KNP USENAVIGATE GK BISA DIPAKE
     // // navigate to the explore page but with mentor state set to false
     // navigate('/explore', { state: { mentorKondisi: false } });
+    // props.onAddToSession();
   };
 
   return (
-    <div className="mentor--container">
+    <div className="project--container">
       <img src={props.image} alt="cewe" className="mentor--image" />
       <div className="mentor--konten">
-        <h3 className="mentor--name">{props.name}</h3>
-        <p style={{ textAlign: "justify", marginLeft: "1rem" }}>{props.desc}</p>
+        <h3 className="project--name">{props.name}</h3>
+        <p style={{ textAlign: "justify", marginLeft: "1rem", height:"205px" }}>{props.desc}</p>
 
         <div className="mentor--star">
           <AiFillStar className="mentor--star--icon" />
-          <p>Matches your profile!</p>
+          <p>{props.type}</p>
         </div>
 
         <div className="mentor--container--bawah">
           <div className="mentor--container--exp">
-            <p>Value</p>
+            <p>Bonus</p>
             <strong>{props.value}</strong>
           </div>
           <div className="mentor--container--att">

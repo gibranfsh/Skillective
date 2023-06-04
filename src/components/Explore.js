@@ -5,22 +5,25 @@ import Mentor from "./Mentor";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Projectbox from "./Projectbox";
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth } from "../context/AuthContext";
 
 export default function Explore() {
   const { user, setUser } = UserAuth();
   const navigate = useNavigate();
-  // const { state } = useLocation();
-  // const mentorState = state ? true : state.mentorKondisi;
-  const [mentor, setMentor] = useState(true);
+  const { state } = useLocation();
+  const mentorState = state?.mentorKondisi;
+  console.log("mentorState", mentorState);
+  const [mentor, setMentor] = useState(!mentorState);
   const [allMentors, setAllMentors] = useState([]);
   const [mentorsFiltered, setMentorsFiltered] = useState([0]);
   const [mentorsId, setMentorsId] = useState(["Empty"]);
   const [allProjects, setAllProjects] = useState([]);
   const [projectsFiltered, setProjectsData] = useState([0]);
   const [projectsId, setProjectsId] = useState(["Empty"]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [sortOrder, setSortOrder] = useState("ascending");
+  const [isFilterMirrored, setIsFilterMirrored] = useState(false);
 
   // Fetch data from Firebase for all mentors
   const fetchAllMentors = async () => {
@@ -30,20 +33,22 @@ export default function Explore() {
       );
       const data = await response.json(); //udah pasti ada
 
-      const mentors = Object.keys(data)
-        .map((mentorId) => {
-          return {
-            id: mentorId,
-            ...data[mentorId],
-          };
-        });
+      const mentors = Object.keys(data).map((mentorId) => {
+        return {
+          id: mentorId,
+          ...data[mentorId],
+        };
+      });
 
       // Update the state with the mentors data
       setAllMentors(mentors);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   // Fetch data from Firebase for mentors that the users have added to their session
   const fetchAllMentorsSession = async () => {
@@ -65,7 +70,10 @@ export default function Explore() {
 
       setMentorsId(mentorsIds);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
   };
 
@@ -89,9 +97,12 @@ export default function Explore() {
       // Update the state with the mentors data
       setMentorsFiltered(mentors);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   // Fetch data from Firebase for all projects
   const fetchAllProjects = async () => {
@@ -101,20 +112,22 @@ export default function Explore() {
       );
       const data = await response.json();
 
-      const projects = Object.keys(data)
-        .map((projectId) => {
-          return {
-            id: projectId,
-            ...data[projectId],
-          };
-        });
+      const projects = Object.keys(data).map((projectId) => {
+        return {
+          id: projectId,
+          ...data[projectId],
+        };
+      });
 
       // Update the state with the projects data
       setAllProjects(projects);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   // Fetch data from Firebase for projects that the users have added to their session
   const fetchAllProjectsSession = async () => {
@@ -136,7 +149,10 @@ export default function Explore() {
 
       setProjectsId(projectsIds);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
   };
 
@@ -160,33 +176,45 @@ export default function Explore() {
       // Update the state with the projects data
       setProjectsData(projects);
     } catch (error) {
-      console.error("Error fetching data from Firebase Realtime Database:", error);
+      console.error(
+        "Error fetching data from Firebase Realtime Database:",
+        error
+      );
     }
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetchAllMentorsSession();
+      if (user) {
+        await fetchAllMentorsSession();
+      }
       // wait
-      await new Promise(r => setTimeout(r, 500));
+      await new Promise((r) => setTimeout(r, 500));
       await fetchAllMentors();
       await fetchAllMentorsExceptSession();
 
-      console.log("allMentors", allMentors)
-      console.log("mentorsId[0]", mentorsId[0])
-      console.log("mentorsFiltered", mentorsFiltered)
-      if (mentorsId.length === 1 && mentorsId[0] === "Empty" && (mentorsFiltered.length === allMentors.length)) {
+      console.log("allMentors", allMentors);
+      console.log("mentorsId[0]", mentorsId[0]);
+      console.log("mentorsFiltered", mentorsFiltered);
+      if (
+        mentorsId.length === 1 &&
+        mentorsId[0] === "Empty" &&
+        mentorsFiltered.length === allMentors.length
+      ) {
         if (mentorsFiltered.length > 0) {
-          console.log("MASUK KE SINI 1")
+          console.log("MASUK KE SINI 1");
           setIsLoading(false);
         }
       } else {
-        if (mentorsFiltered.length > 0 && mentorsId.length > 0 && !(mentorsId[0] === "Empty")) {
-          console.log("MASUK KE SINI 2")
+        if (
+          mentorsFiltered.length > 0 &&
+          mentorsId.length > 0 &&
+          !(mentorsId[0] === "Empty")
+        ) {
+          console.log("MASUK KE SINI 2");
           setIsLoading(false);
         }
       }
-
     };
     fetchData();
   }, [user, mentorsId]);
@@ -194,14 +222,15 @@ export default function Explore() {
   useEffect(() => {
     const fetchProjects = async () => {
       // Fetch all projects session
-      await fetchAllProjectsSession();
+      if (user) {
+        await fetchAllProjectsSession();
+      }
 
       // Fetch all projects
       await fetchAllProjects();
 
       // Fetch projects excluding the ones in the session
       await fetchAllProjectsExceptSession();
-
     };
 
     fetchProjects();
@@ -211,28 +240,64 @@ export default function Explore() {
     setSearchQuery(event.target.value);
   };
 
+  const handleAddToSession = () => {
+    setMentor(false); // Set mentor state to false
+    navigate("/explore", { state: { mentorKondisi: true } }); // Navigate to /explore with mentorKondisi = false
+  };
+
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
+    toggleFilterMirrored();
+  };
+
+  const toggleFilterMirrored = () => {
+    setIsFilterMirrored(!isFilterMirrored); // Toggle the mirrored state
+  };
+  
   const konten = () => {
+    // Filter mentors by search query
     const filteredMentors = mentorsFiltered.filter((mentorData) => {
-      const { name, company } = mentorData;
+      const { name, company, job } = mentorData;
       const query = searchQuery.toLowerCase();
       return (
-        name && name.toLowerCase().includes(query) ||
-        company && company.toLowerCase().includes(query)
+        (name && name.toLowerCase().includes(query)) ||
+        (company && company.toLowerCase().includes(query)) ||
+        (job && job.toLowerCase().includes(query))
       );
     });
 
+    // Sort mentors by name
+    const sortedMentors = filteredMentors.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      return sortOrder === "ascending"
+        ? nameA.localeCompare(nameB)
+        : nameB.localeCompare(nameA);
+    });
+
+    // Filter projects by search query
     const filteredProjects = projectsFiltered.filter((projectData) => {
-      const { name, company } = projectData;
+      const { name, company, type } = projectData;
       const query = searchQuery.toLowerCase();
       return (
-        name && name.toLowerCase().includes(query) ||
-        company && company.toLowerCase().includes(query)
+        (name && name.toLowerCase().includes(query)) ||
+        (company && company.toLowerCase().includes(query)) ||
+        (type && type.toLowerCase().includes(query))
       );
+    });
+
+    // Sort projects by name
+    const sortedProjects = filteredProjects.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      return sortOrder === "ascending"
+        ? nameA.localeCompare(nameB)
+        : nameB.localeCompare(nameA);
     });
 
     if (mentor) {
       if (isLoading) {
-        return <p>Loading...</p>;
+        return <div className="loader"></div>;
       } else {
         if (filteredMentors.length > 0) {
           return filteredMentors.map((mentorData) => (
@@ -242,17 +307,21 @@ export default function Explore() {
               company={mentorData.company}
               experience={mentorData.experience}
               attendance={mentorData.attendance}
+              job={mentorData.job}
+              image={mentorData.image}
             />
           ));
-        } else if (mentorsFiltered.length === 0) { // && mentorsId.length > 0
+        } else if (mentorsFiltered.length === 0) {
+          // && mentorsId.length > 0
           return <p>Woah. You already add all the mentors to your session.</p>;
-        } else { // (mentorsId.length === 0)
-          return null;
+        } else {
+          // (mentorsId.length === 0)
+          return <p>No Results Found</p>;
         }
       }
     } else {
       if (isLoading) {
-        return <p>Loading...</p>;
+        return <div class="loader"></div>;
       } else {
         if (filteredProjects.length > 0) {
           return filteredProjects.map((projectData) => (
@@ -265,18 +334,30 @@ export default function Explore() {
               image={projectData.image}
               desc={projectData.desc}
               tanggal={projectData.tanggal}
+              type={projectData.type}
               status="progress"
-              // navigate={navigate}
+              onAddToSession={handleAddToSession}
             />
           ));
-        } else if (projectsFiltered.length === 0) { // && projectsId.length > 0
+        } else if (projectsFiltered.length === 0) {
+          // && projectsId.length > 0
           return <p>Woah. You already add all the projects to your session.</p>;
-        } else { // (projectsId.length === 0)
-          return null;
+        } else {
+          // (projectsId.length === 0)
+          return <p>No Results Found</p>;
         }
       }
     }
   };
+
+  const onDifficultyChange = (event) => {
+    if (event.target.value === "easy") {
+      setMentor(true);
+    } else if (event.target.value === "medium") {
+      setMentor(false);
+    }
+  };
+
   return (
     <div className="explore">
       <div className="home--choice">
@@ -285,36 +366,33 @@ export default function Explore() {
             type="radio"
             name="difficulty"
             value="easy"
-            checked
-            onchange="onDifficultyChange(this)"
-            onClick={() => setMentor(true)}
+            checked={mentor}
+            onChange={onDifficultyChange}
           />
-          <span className="home--choice--button">Mentors</span>
+          <span className="home--choice--button cursor-pointer">Mentors</span>
         </label>
         <label>
           <input
             type="radio"
             name="difficulty"
             value="medium"
-            onchange="onDifficultyChange(this)"
-            onClick={() => setMentor(false)}
+            checked={!mentor}
+            onChange={onDifficultyChange}
           />
-          <span className="home--choice--button">Projects</span>
+          <span className="home--choice--button cursor-pointer">Projects</span>
         </label>
       </div>
       <div className="explore--search">
-        <div className="search--container">
-          <BsSearch className="explore--search--icon" />
-          <input
-            type="text"
-            placeholder="Search by name or company"
-            className="explore--search--input"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-        </div>
-        <div className="filter--container">
-          <IoFilter className="explore--search--filter" />
+        <BsSearch className="explore--search--icon" />
+        <input
+          type="text"
+          placeholder="Search by name or company"
+          className="explore--search--input"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+        <div className="filter--container cursor-pointer" onClick={toggleSortOrder}>
+          <IoFilter className={`explore--search--filter cursor-pointer ${isFilterMirrored ? "mirrored" : ""}`}/>
           <p className="filter--teks">Filter</p>
         </div>
       </div>
