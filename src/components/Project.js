@@ -18,6 +18,7 @@ const Project = () => {
         desc: "", // The project's desc
     })
     const [image, setImage] = useState(null);
+    const [projectSubmitted, setProjectSubmitted] = useState(false);
 
     const projectTypes = [
         "Web Development",
@@ -125,7 +126,7 @@ const Project = () => {
                             desc: values.desc
                         })
                             .then(() => {
-                                alert('Project has been submitted!');
+                                // alert('Project has been submitted!');
                                 setValues({
                                     projectName: "",
                                     projectType: "",
@@ -134,6 +135,11 @@ const Project = () => {
                                     image: "",
                                     desc: ""
                                 });
+                                setProjectSubmitted(true);
+                                // redirect to home page
+                                // window.location.href = "/";
+
+
                             })
                             .catch(error => {
                                 alert(error.message);
@@ -178,63 +184,74 @@ const Project = () => {
 
                     <div className="project-page">
                         <h2>Project Submission Form</h2>
-
-                        <p className="project-page__description">
-                            Welcome to the Project Submission Page! This page allows you to submit project details<br></br>
-                            and track their progress. Fill in the required information, upload images (company's logo, etc),<br></br>
-                            and submit the project.
-                        </p>
+                        {!projectSubmitted ?
+                            (<p className="project-page__description">
+                                Welcome to the Project Submission Page! This page allows you to submit project details<br></br>
+                                and track their progress. Fill in the required information, upload images (company's logo, etc),<br></br>
+                                and submit the project.
+                            </p>) : (
+                                <p className="project-page__description">
+                                    Project has been submitted!
+                                </p>
+                            )
+                        }
                     </div>
-
-                    <form onSubmit={handleSubmit}>
-                        {inputs.map((input) => (
-                            <div className="login--form" key={input.id}>
-                                <label className="login--label">{"Project's " + input.label}</label>
-                                {input.name === "image" ? (
-                                    <input
-                                        className="login--input"
-                                        type={input.type}
-                                        name={input.name}
-                                        placeholder={input.placholder}
-                                        value={values[input.name]}
-                                        onChange={handleImageChange}
-                                    />
-                                ) : input.type === "dropdown" ? ( // Render dropdown for "projectType" input
-                                    <select
-                                        className="login--input"
-                                        name={input.name}
-                                        value={values[input.name]}
-                                        onChange={onChange}
-                                    >
-                                        <option value="">Select a project type</option>
-                                        {projectTypes.map((type) => (
-                                            <option key={type} value={type}>
-                                                {type}
-                                            </option>
-                                        ))}
-                                    </select>
-                                ) : (
-                                    <input
-                                        className="login--input"
-                                        type={input.type}
-                                        name={input.name}
-                                        placeholder={input.placholder}
-                                        value={values[input.name]}
-                                        onChange={onChange}
-                                    />
-                                )}
-                                {errors[input.name] && <span className="projectSpan">{errors[input.name]}</span>}
+                    {!projectSubmitted ? (
+                        <form onSubmit={handleSubmit}>
+                            {inputs.map((input) => (
+                                <div className="login--form" key={input.id}>
+                                    <label className="login--label">{"Project's " + input.label}</label>
+                                    {input.name === "image" ? (
+                                        <input
+                                            className="login--input"
+                                            type={input.type}
+                                            name={input.name}
+                                            placeholder={input.placholder}
+                                            value={values[input.name]}
+                                            onChange={handleImageChange}
+                                        />
+                                    ) : input.type === "dropdown" ? ( // Render dropdown for "projectType" input
+                                        <select
+                                            className="login--input"
+                                            name={input.name}
+                                            value={values[input.name]}
+                                            onChange={onChange}
+                                        >
+                                            <option value="">Select a project type</option>
+                                            {projectTypes.map((type) => (
+                                                <option key={type} value={type}>
+                                                    {type}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    ) : (
+                                        <input
+                                            className="login--input"
+                                            type={input.type}
+                                            name={input.name}
+                                            placeholder={input.placholder}
+                                            value={values[input.name]}
+                                            onChange={onChange}
+                                        />
+                                    )}
+                                    {errors[input.name] && <span className="projectSpan">{errors[input.name]}</span>}
+                                </div>
+                            ))}
+                            <div className="project-page">
+                                <p className="project-page__description">
+                                    Once you have filled in all the required information, click the "Submit" button.<br></br>
+                                    The project will be saved, and you will receive a confirmation upon successful<br></br>
+                                    submission through your email. Thank you!
+                                </p>
                             </div>
-                        ))}
+                            <button className="login--submit" style={{ paddingTop: "0.8rem" }}>Submit</button>
+                        </form>) : (
                         <div className="project-page">
                             <p className="project-page__description">
-                                Once you have filled in all the required information, click the "Submit" button.<br></br>
-                                The project will be saved, and you will receive a confirmation upon successful<br></br>
-                                submission through your email. Thank you!
                             </p>
                         </div>
-                        <button className="login--submit" style={{paddingTop:"0.8rem"}}>Submit</button>
-                    </form>
+                    )
+                    }
                 </div>
             </div>
         </div>
