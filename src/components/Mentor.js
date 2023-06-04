@@ -6,7 +6,7 @@ import {MdLocationCity} from "react-icons/md";
 import {
   getDownloadURL,
   ref as sRef,
-} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+} from "firebase/storage";
 import { UserAuth } from "../context/AuthContext";
 import "./Mentor.css";
 

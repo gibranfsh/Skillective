@@ -1,7 +1,7 @@
 import { storage, database, auth } from '../firebase';
-import { set, update, ref, collection, add, push } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
-import { ref as sRef } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
-import { getDownloadURL, uploadBytes } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+import { set, update, ref, collection, add, push } from "firebase/database";
+import { ref as sRef } from "firebase/storage";
+import { getDownloadURL, uploadBytes } from "firebase/storage";
 import { UserAuth } from '../context/AuthContext';
 import './Project.css';
 import { useRef, useState } from 'react';

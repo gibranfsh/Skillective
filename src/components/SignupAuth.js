@@ -1,5 +1,5 @@
 import { database} from '../firebase';
-import { update, ref } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+import { update, ref } from "firebase/database";
 import { useRef } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';

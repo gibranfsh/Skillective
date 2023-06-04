@@ -1,6 +1,6 @@
 import { database, auth } from '../firebase';
-import { set, update, ref } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
-import { createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+import { set, update, ref } from "firebase/database";
+import { createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from "firebase/auth";
 import { useRef } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';

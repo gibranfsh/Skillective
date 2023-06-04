@@ -1,6 +1,6 @@
 import { database, auth } from '../firebase';
-import { update, ref } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
-import { signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+import { update, ref } from "firebase/database";
+import { signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useRef } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';

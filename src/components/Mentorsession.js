@@ -4,7 +4,7 @@ import "./Yoursession.css"
 import {
     getDownloadURL,
     ref as sRef,
-} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+} from "firebase/storage";
 
 export default function Mentorsession(props) {
     const [imageUrl, setImageUrl] = useState("");
