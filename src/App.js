@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 import SignupAuth from "./components/SignupAuth";
 import Explore from "./components/Explore";
 import Yoursession from "./components/Yoursession";
+import Profile from "./components/Profile";
 
 function App() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
