@@ -23,6 +23,7 @@ export default function Explore() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState("ascending");
+  const [isFilterMirrored, setIsFilterMirrored] = useState(false);
 
   // Fetch data from Firebase for all mentors
   const fetchAllMentors = async () => {
@@ -246,8 +247,13 @@ export default function Explore() {
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
+    toggleFilterMirrored();
   };
 
+  const toggleFilterMirrored = () => {
+    setIsFilterMirrored(!isFilterMirrored); // Toggle the mirrored state
+  };
+  
   const konten = () => {
     // Filter mentors by search query
     const filteredMentors = mentorsFiltered.filter((mentorData) => {
@@ -386,7 +392,7 @@ export default function Explore() {
           onChange={handleSearch}
         />
         <div className="filter--container cursor-pointer" onClick={toggleSortOrder}>
-          <IoFilter className="explore--search--filter"/>
+          <IoFilter className={`explore--search--filter cursor-pointer ${isFilterMirrored ? "mirrored" : ""}`}/>
           <p className="filter--teks">Filter</p>
         </div>
       </div>
