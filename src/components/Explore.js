@@ -253,7 +253,7 @@ export default function Explore() {
   const toggleFilterMirrored = () => {
     setIsFilterMirrored(!isFilterMirrored); // Toggle the mirrored state
   };
-  
+
   const konten = () => {
     // Filter mentors by search query
     const filteredMentors = mentorsFiltered.filter((mentorData) => {
@@ -384,15 +384,25 @@ export default function Explore() {
       </div>
       <div className="explore--search">
         <BsSearch className="explore--search--icon" />
-        <input
-          type="text"
-          placeholder="Search by name or company"
-          className="explore--search--input"
-          value={searchQuery}
-          onChange={handleSearch}
-        />
+        {mentor ? (
+          <input
+            type="text"
+            placeholder="Search by mentor's name, job, or company"
+            className="explore--search--input"
+            value={searchQuery}
+            onChange={handleSearch}
+          />) : (
+          <input
+            type="text"
+            placeholder="Search by project's name or type"
+            className="explore--search--input"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        )
+        }
         <div className="filter--container cursor-pointer" onClick={toggleSortOrder}>
-          <IoFilter className={`explore--search--filter cursor-pointer ${isFilterMirrored ? "mirrored" : ""}`}/>
+          <IoFilter className={`explore--search--filter cursor-pointer ${isFilterMirrored ? "mirrored" : ""}`} />
           <p className="filter--teks">Filter</p>
         </div>
       </div>
